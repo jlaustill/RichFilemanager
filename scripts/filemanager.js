@@ -11,6 +11,7 @@
  */
 
 (function($) {
+	var _$ = {};
 
 // function to retrieve GET params
 $.urlParam = function(name) {
@@ -412,13 +413,13 @@ var trimSlashes = function(string) {
 	return string.replace(/^\/+|\/+$/g, '');
 };
 
-var encodePath = function(path) {
-	var parts = [];
-	$.each(path.split('/'), function(i, part) {
-		parts.push(encodeURIComponent(part));
-	});
-	return parts.join('/');
-};
+// var encodePath = function(path) {
+// 	var parts = [];
+// 	$.each(path.split('/'), function(i, part) {
+// 		parts.push(encodeURIComponent(part));
+// 	});
+// 	return parts.join('/');
+// };
 
 // from http://phpjs.org/functions/basename:360
 var basename = function(path, suffix) {
@@ -2237,6 +2238,7 @@ var getFolderData = function(path) {
 			'dataType': "json",
 			'cache': false,
 			'success': function(data) {
+			    console.log("getFolderData data -> ", data);
 				loadedFolderData[path] = {
 					cached: Date.now(),
 					data: data
